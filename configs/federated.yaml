@@ -1,0 +1,67 @@
+# Federated learning specific configurations
+
+# Aggregation methods
+aggregation_strategy: "fedavg"  # Options: fedavg, fedprox, fedasync, krum
+fedprox_mu: 0.01  # Proximal term coefficient for FedProx
+
+# Communication settings
+num_clients: 10
+clients_per_round: 5  # C: fraction of clients selected per round
+min_fit_clients: 3  # Minimum clients needed to proceed
+min_eval_clients: 3
+num_rounds: 100
+
+# Client training
+local_epochs: 5
+local_batch_size: 32
+local_learning_rate: 0.0005
+
+# Byzantine robustness (Krum)
+krum_k: 2  # Number of neighbors for Krum
+byzantine_clients: 0  # Number of malicious clients (for testing)
+
+# Differential Privacy
+enable_dp: false
+dp_epsilon: 1.0
+dp_delta: 1e-5
+dp_max_grad_norm: 1.0
+dp_noise_multiplier: 1.1
+
+# Communication dropout simulation
+enable_dropout: true
+dropout_probability: 0.3  # 30% chance of client unavailability
+dropout_pattern: "random"  # Options: random, periodic, burst
+
+# Asynchronous updates (FedAsync)
+async_staleness_threshold: 5  # Max rounds of staleness
+async_alpha: 0.9  # Staleness penalty factor
+
+# Client heterogeneity
+heterogeneous_data: true
+data_distribution: "non_iid"  # Options: iid, non_iid, label_skew
+concentration_param: 0.5  # Dirichlet alpha for non-IID split
+
+# Resource constraints
+simulate_limited_resources: true
+client_compute_variance: 0.3  # Variation in client compute power
+client_bandwidth_variance: 0.4  # Variation in network bandwidth
+
+# Model compression
+enable_compression: false
+compression_method: "quantization"  # Options: quantization, sparsification, low_rank
+quantization_bits: 8
+
+# Fault tolerance
+enable_checkpointing: true
+checkpoint_frequency: 10  # rounds
+restart_from_checkpoint: false
+
+# Evaluation
+eval_on_server: true
+eval_frequency: 5  # rounds
+validation_split: 0.2
+
+# Logging
+log_client_metrics: true
+log_communication_cost: true
+save_client_models: false

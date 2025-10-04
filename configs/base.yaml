@@ -1,0 +1,45 @@
+# Default hyperparameters for MARL training
+
+# Learning parameters
+learning_rate: 0.0005
+batch_size: 32
+replay_buffer_size: 10000
+gamma: 0.99
+epsilon_start: 1.0
+epsilon_end: 0.05
+epsilon_decay: 0.995
+target_update_freq: 100
+
+# Training configuration
+max_episodes: 5000
+max_steps_per_episode: 200
+eval_frequency: 50
+save_frequency: 100
+
+# Network architecture
+hidden_dim: 128
+num_hidden_layers: 2
+activation: "relu"
+
+# QMIX specific
+mixing_embed_dim: 32
+hypernet_layers: 2
+hypernet_embed_dim: 64
+
+# Optimization
+optimizer: "adam"
+grad_clip: 10.0
+weight_decay: 0.0
+
+# Exploration
+exploration_strategy: "epsilon_greedy"
+boltzmann_temperature: 1.0
+
+# Logging
+log_dir: "logs/"
+tensorboard: true
+save_replay_buffer: false
+
+# Device
+device: "cuda"  # "cuda" or "cpu"
+seed: 42

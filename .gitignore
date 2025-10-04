@@ -1,0 +1,397 @@
+# Fed-MARL: Federated Multi-Agent Reinforcement Learning for Drone Swarms
+# Comprehensive .gitignore for Python ML/AI project
+
+# =============================================================================
+# Python
+# =============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# =============================================================================
+# Virtual Environments
+# =============================================================================
+fedenv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.ENV/
+
+# =============================================================================
+# PyTorch & Deep Learning
+# =============================================================================
+*.pth
+*.pt
+*.ckpt
+*.pkl
+*.h5
+*.hdf5
+*.weights
+*.model
+*.tflite
+*.onnx
+
+# Training checkpoints and models
+checkpoints/
+checkpoints_*/
+checkpoints_indian_skyscape/
+indian_skyscape_checkpoints/
+demo_checkpoints/
+models/
+saved_models/
+trained_models/
+best_model.pth
+final_model.pth
+qmix_*.pth
+*.pth.bak
+
+# Training logs and metrics
+logs/
+runs/
+tensorboard_logs/
+wandb/
+mlruns/
+.mlflow/
+experiment_logs/
+training_logs/
+
+# =============================================================================
+# Data & Datasets
+# =============================================================================
+data/
+datasets/
+*.csv
+*.json
+*.parquet
+*.feather
+*.pickle
+*.npy
+*.npz
+*.mat
+*.hdf5
+*.h5
+*.db
+*.sqlite
+*.sqlite3
+
+# Large data files
+*.zip
+*.tar.gz
+*.tar.bz2
+*.rar
+*.7z
+
+# =============================================================================
+# Jupyter Notebooks
+# =============================================================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*.ipynb
+!examples/*.ipynb
+!tutorials/*.ipynb
+
+# =============================================================================
+# IDE & Editors
+# =============================================================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# =============================================================================
+# OS Generated Files
+# =============================================================================
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# Testing & Coverage
+# =============================================================================
+.coverage
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+htmlcov/
+.cache
+nosetests.xml
+coverage.info
+.coverage.*
+coverage_html_report/
+
+# =============================================================================
+# Documentation
+# =============================================================================
+docs/_build/
+docs/build/
+site/
+.readthedocs.yml
+.sphinx/
+
+# =============================================================================
+# Configuration & Secrets
+# =============================================================================
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Configuration files with secrets
+config_local.yaml
+config_secret.yaml
+secrets.yaml
+credentials.json
+auth.json
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+
+# API keys and tokens
+api_keys.txt
+tokens.txt
+.secrets
+
+# =============================================================================
+# Temporary & Cache Files
+# =============================================================================
+*.tmp
+*.temp
+*.log
+*.out
+*.err
+*.pid
+*.seed
+*.pid.lock
+.grunt
+bower_components
+.lock-wscript
+build/Release
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =============================================================================
+# ML/AI Specific
+# =============================================================================
+# Weights & Biases
+wandb/
+
+# TensorBoard
+tensorboard_logs/
+runs/
+
+# MLflow
+mlruns/
+.mlflow/
+
+# Hydra
+.hydra/
+outputs/
+
+# DVC
+.dvc/
+.dvcignore
+
+# =============================================================================
+# Project Specific
+# =============================================================================
+# Training outputs
+training_outputs/
+experiment_results/
+evaluation_results/
+benchmark_results/
+
+# Visualization outputs
+plots/
+figures/
+images/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.pdf
+*.eps
+*.ps
+!docs/images/*.png
+!docs/images/*.jpg
+!docs/images/*.svg
+
+# Simulation outputs
+simulation_data/
+trajectory_data/
+collision_logs/
+performance_metrics/
+
+# Backup files
+*.bak
+*.backup
+*.old
+*_backup.*
+*_old.*
+
+# =============================================================================
+# Development Tools
+# =============================================================================
+# Black
+.black/
+
+# isort
+.isort.cfg
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pytype
+.pytype/
+
+# Cython
+cython_debug/
+
+# =============================================================================
+# Package Management
+# =============================================================================
+Pipfile.lock
+poetry.lock
+conda-meta/
+.conda/
+
+# =============================================================================
+# Monitoring & Profiling
+# =============================================================================
+*.prof
+*.profile
+*.pstats
+*.cprofile
+memory_profiler_*.log
+line_profiler_*.lprof
+
+# =============================================================================
+# Custom Exclusions
+# =============================================================================
+# Keep important files
+!requirements.txt
+!requirements-dev.txt
+!setup.py
+!setup.cfg
+!pyproject.toml
+!README.md
+!LICENSE
+!CONTRIBUTING.md
+!CHANGELOG.md
+!.gitignore
+!.github/
+
+# Keep example configs
+!configs/*.yaml
+!configs/*.yml
+!configs/*.json
+
+# Keep test data (small files only)
+!tests/data/*.txt
+!tests/data/*.csv
+!tests/data/*.json
+
+# Keep documentation assets
+!docs/assets/
+!docs/images/
+!docs/figures/
+
+# =============================================================================
+# End of .gitignore
+# =============================================================================

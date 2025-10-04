@@ -1,0 +1,125 @@
+name: 🧪 Fed-MARL Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: [3.8, 3.9, '3.10', '3.11']
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: 🐍 Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+    
+    - name: 🧪 Run tests
+      run: |
+        python -m core.training.test_qmix
+    
+    - name: 📊 Test coverage
+      run: |
+        pytest tests/ --cov=core --cov-report=xml
+    
+    - name: 📈 Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+    
+    - name: 🎨 Format check with black
+      run: black --check core/ tests/
+    
+    - name: 📋 Import sorting with isort
+      run: isort --check-only core/ tests/
+    
+    - name: 🔍 Lint with flake8
+      run: flake8 core/ tests/
+    
+    - name: 🔍 Type check with mypy
+      run: mypy core/
+
+  training-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: 🚁 Quick training test
+      run: |
+        python -c "
+        from core.envs.indian_skyscape_env import IndianSkyscapeEnv
+        from core.agents.qmix_model import QMIXAgent
+        
+        # Create environment
+        env = IndianSkyscapeEnv(num_drones=3, grid_size=[1000, 1000, 200])
+        obs_dict, _ = env.reset()
+        
+        # Create agent
+        agent = QMIXAgent(n_agents=3, obs_dim=obs_dict[0].shape[0], action_dim=7)
+        
+        # Quick training test
+        for episode in range(5):
+            obs_dict, _ = env.reset()
+            for step in range(10):
+                obs = [obs_dict[i] for i in range(3)]
+                actions = agent.get_actions(obs)
+                obs_dict, rewards, done, truncated, info = env.step(actions)
+                if done or truncated:
+                    break
+        
+        print('✅ Quick training test passed!')
+        env.close()
+        "
+    
+    - name: 📊 Environment validation
+      run: |
+        python -c "
+        from core.envs.indian_skyscape_env import IndianSkyscapeEnv
+        env = IndianSkyscapeEnv(num_drones=5)
+        obs, info = env.reset()
+        print(f'✅ Environment: {env.num_drones} drones, obs shape {obs[0].shape}')
+        print(f'✅ Initial coverage: {info[\"coverage\"]:.1%}')
+        env.close()
+        "

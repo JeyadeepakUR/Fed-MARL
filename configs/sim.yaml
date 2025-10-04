@@ -1,0 +1,96 @@
+# Urban grid environment and drone simulation parameters
+
+# Environment settings
+env_type: "urban_grid"  # Options: urban_grid, airsim, custom
+grid_size: [20, 20]  # [width, height] in meters
+cell_size: 1.0  # meters
+
+# Drone swarm configuration
+num_drones: 5
+max_drones: 50
+drone_spawn_mode: "random"  # Options: random, predefined, clustered
+
+# Mission parameters
+mission_type: "coverage"  # Options: coverage, surveillance, delivery, search_rescue
+coverage_target: 0.95  # 95% area coverage
+mission_timeout: 500  # steps
+waypoint_count: 10
+
+# Observation space
+obs_type: "local"  # Options: local, global, hybrid
+obs_radius: 5.0  # meters
+include_teammate_obs: true
+include_obstacle_map: true
+normalize_observations: true
+
+# Action space
+action_type: "discrete"  # Options: discrete, continuous
+discrete_actions: ["north", "south", "east", "west", "hover"]
+continuous_action_dim: 3  # [vx, vy, vz]
+max_velocity: 2.0  # m/s
+max_acceleration: 1.0  # m/s^2
+
+# Obstacles and environment
+obstacle_density: 0.15  # 15% of cells
+dynamic_obstacles: true
+obstacle_movement_speed: 0.5  # m/s
+building_heights: [5, 10, 15, 20]  # meters
+
+# Rewards
+reward_structure:
+  coverage: 1.0
+  collision_penalty: -10.0
+  timeout_penalty: -5.0
+  energy_penalty: -0.01
+  proximity_reward: 0.5
+  goal_reward: 10.0
+
+# Physics simulation
+physics_enabled: true
+gravity: 9.81  # m/s^2
+air_resistance: 0.1
+wind_enabled: false
+wind_speed: [0.0, 0.0, 0.0]  # [vx, vy, vz] m/s
+
+# Communication constraints
+comm_range: 10.0  # meters
+comm_bandwidth: 1000  # kbps
+message_delay: 0.1  # seconds
+packet_loss_rate: 0.05
+
+# Domain randomization (for sim2real)
+enable_randomization: true
+randomization_params:
+  lighting_variance: 0.3
+  sensor_noise_stddev: 0.1
+  initial_position_noise: 1.0  # meters
+  dynamics_noise: 0.05
+  obstacle_position_noise: 0.5
+
+# Energy model
+battery_capacity: 5000  # mAh
+hover_power: 100  # watts
+movement_power_multiplier: 1.5
+low_battery_threshold: 0.2  # 20%
+enable_recharging: false
+
+# Collision detection
+collision_radius: 0.5  # meters
+collision_check_frequency: 10  # Hz
+soft_collision: false  # Allow overlap with penalty
+
+# Visualization
+render_mode: "human"  # Options: human, rgb_array, none
+render_fps: 30
+show_communication_links: true
+show_observation_radius: true
+camera_follow_mode: "center"  # Options: center, first_person, free
+
+# Episode termination
+terminate_on_collision: false
+terminate_on_coverage: true
+terminate_on_timeout: true
+
+# Seeding
+env_seed: 42
+deterministic: false
