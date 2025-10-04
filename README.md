@@ -353,9 +353,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 **Support & Contact**
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/Fed-MARL/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/Fed-MARL/discussions)
-- **Email**: your.email@example.com
+- **Issues**: [GitHub Issues](https://github.com/JeyadeepakUR/Fed-MARL/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/JeyadeepakUR/Fed-MARL/discussions)
 
 ---
 
@@ -372,7 +371,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **🌟 Star this repository if you find it helpful!**
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/Fed-MARL.svg?style=social&label=Star)](https://github.com/yourusername/Fed-MARL)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/Fed-MARL.svg?style=social&label=Fork)](https://github.com/yourusername/Fed-MARL/fork)
+[![GitHub stars](https://img.shields.io/github/stars/JeyadeepakUR/Fed-MARL.svg?style=social&label=Star)](https://github.com/JeyadeepakUR/Fed-MARL)
+[![GitHub forks](https://img.shields.io/github/forks/JeyadeepakUR/Fed-MARL.svg?style=social&label=Fork)](https://github.com/JeyadeepakUR/Fed-MARL/fork)
 
 </div>
